@@ -1,0 +1,14 @@
+{
+  "name": "js-key-validator",
+  "version": "1.0.0",
+  "description": "Javascript key validator",
+  "main": "dist/index.js",
+  "scripts": {},
+  "keywords": ["javascript", "key", "validator", "key-validator"],
+  "author": "Santo Riggio",
+  "type": "module",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
