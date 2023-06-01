@@ -78,6 +78,6 @@ The `keyValidator` function accepts the following parameters:
 
 The `js-key-validator` library is currently in progress, and there are more features and enhancements planned for the future. Your feedback, suggestions, and contributions are highly appreciated.
 
-If you have any ideas for additional functionalities or improvements, please feel free to open an issue on the [GitHub repository]([https://github.com/your-username/js-key-validator](https://github.com/santoriggio/js-key-validator/issues)). Your input will help shape the future development of the library.
+If you have any ideas for additional functionalities or improvements, please feel free to open an issue on the [GitHub repository](https://github.com/santoriggio/js-key-validator/issues). Your input will help shape the future development of the library.
 
 
