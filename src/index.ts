@@ -1,54 +1,61 @@
-type ValidatorType = "isString" | "isBoolean";
+import { Options, ReturnType, Types } from "./types.js";
 
-type TestReturn = {};
+export default function keyValidator(value: any, type: "isString", options?: Options): ReturnType<string>;
 
-export default function keyValidator(value: any, path: string = "") {
+export default function keyValidator(value: any, type: "isNumber", options?: Options): ReturnType<number>;
+
+export default function keyValidator(value: any, type: "isBoolean", options?: Options): ReturnType<boolean>;
+
+export default function keyValidator(value: any, type: Types, options?: Options) {
   try {
-    //check if value is an object but not an array
-    if (typeof value == "object" && Array.isArray(value) == false) {
-      if (path.length > 0) {
-        const convertedValue = eval(`value.${path}`);
+    let formattedValue = value;
 
-        return new Validator(convertedValue);
+    if (typeof options != "undefined") {
+      let path = "";
+
+      if (typeof options == "string") {
+        //is path
+        path = options;
       }
 
-      return new Validator(value);
-    }
-
-    return new Validator(value);
-  } catch (error) {}
-}
-
-class Validator {
-  value: any;
-  exist: boolean;
-
-  constructor(value: any) {
-    this.init(value);
-  }
-
-  private init(value: any) {
-    if (typeof value != "undefined") {
-      this.value = value;
-    }
-  }
-
-  isString(): boolean;
-
-  isString(returnType: "key"): string;
-
-  isString(returnType: "key" | "condition" | undefined = "condition"): string | boolean {
-    try {
-      if (returnType === "condition") {
-        if (typeof this.value === "string") return true;
-        return false;
+      if (typeof options == "object") {
+        if (typeof options.path != "undefined") {
+          path = options.path;
+        }
       }
 
-      if (typeof this.value === "string") return this.value;
+      path.split(".").forEach((x, index, array) => {
+        //const isLast = array.length == index + 1;
 
-      throw new Error("Value is not a string");
-    } catch (error) {
-      console.error(error);
+        formattedValue = formattedValue[x];
+        // if (isLast) {
+        // } else {
+        //   const validate = isObject(formattedValue);
+
+        //     formattedValue = validate.value[x];
+
+        // }
+      });
     }
+
+    if (type == "isString") {
+      let isValid = typeof formattedValue == "string" && formattedValue != null;
+
+      return { isValid, value: formattedValue };
+    }
+
+    if (type == "isNumber") {
+      let isValid = typeof formattedValue == "number" && formattedValue != null;
+
+      return { isValid, value: formattedValue };
+    }
+
+    if (type == "isBoolean") {
+      let isValid = typeof formattedValue == "boolean" && formattedValue != null;
+
+      return { isValid, value: formattedValue };
+    }
+  } catch (error) {
+    console.error(error);
   }
 }
