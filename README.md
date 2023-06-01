@@ -2,6 +2,37 @@
 
 The `js-key-validator` package provides a utility function called `keyValidator` for validating values based on their type and options.
 
+## Motivation
+
+The `js-key-validator` library was created with the aim of simplifying the handling of undefined and null values in JavaScript. Many developers often encounter scenarios where they need to perform checks for these values before proceeding with further logic. This repetitive task can lead to code clutter and decreased readability.
+
+The `keyValidator` function provided by this library offers a streamlined solution to validate values and handle potential undefined and null cases more efficiently. By encapsulating the validation logic within a single function, the need for lengthy and repetitive code blocks is significantly reduced.
+
+### Example
+
+Consider the following example where we need to check if a person object has a valid name property:
+
+```javascript
+const person = {
+  name: 'John Doe',
+  age: 30,
+  address: null
+};
+
+// Without js-key-validator
+if (person && person.name !== undefined && person.name !== null) {
+  // Perform some logic with person.name
+  console.log('Name:', person.name);
+}
+
+// With js-key-validator
+const result = keyValidator(person.name, 'isString');
+if (result.isValid) {
+  // Perform some logic with result.value
+  console.log('Name:', result.value);
+}
+```
+
 ## Installation
 
 You can install `js-key-validator` using npm:
