@@ -8,30 +8,34 @@ const obj = {
     home: "123456789",
     work: "333444555",
   },
+  password: "StrongPass",
+  email: "john@email.com",
 };
 
-//Check if object has name and it is a string
-const validateName = keyValidator(obj, "isString", "name");
+const validate = keyValidator(obj, "isEmail", "email");
 
-console.log(validateName.isValid); // Output: true
-console.log(validateName.value); // Output: John
+console.log(validate);
 
-//Check if age is a number
-const validateAge = keyValidator(obj.age, "isNumber");
+// //Check if object has name and it is a string
+// const validateName = keyValidator(obj, "isString", "name");
 
-console.log(validateAge.isValid); // Output: true
-console.log(validateAge.value); // Output: 30
+// console.log(validateName.isValid); // Output: true
+// console.log(validateName.value); // Output: John
 
-//Validate deep keys object
-const validateHomePhone = keyValidator(obj, "isNumber", "phones.home");
+// //Check if age is a number
+// const validateAge = keyValidator(obj.age, "isNumber");
 
-console.log(validateHomePhone.isValid); // Output: true
-console.log(validateHomePhone.value); // Output: 123456789
+// console.log(validateAge.isValid); // Output: true
+// console.log(validateAge.value); // Output: 30
 
-//Check for a key that don't exist
-const validateHeight = keyValidator(obj, "isNumber", "obj.height");
+// //Validate deep keys object
+// const validateHomePhone = keyValidator(obj, "isNumber", "phones.home");
 
-console.log(validateHeight.isValid); // Output: false
-console.log(validateHeight.value); // Output: undefined
+// console.log(validateHomePhone.isValid); // Output: true
+// console.log(validateHomePhone.value); // Output: 123456789
 
+// //Check for a key that don't exist
+// const validateHeight = keyValidator(obj, "isNumber", "obj.height");
 
+// console.log(validateHeight.isValid); // Output: false
+// console.log(validateHeight.value); // Output: undefined

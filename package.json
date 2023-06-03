@@ -4,6 +4,14 @@
   "description": "Javascript key validator",
   "main": "dist/index.js",
   "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santoriggio/js-key-validator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/santoriggio/js-key-validator/issues"
+  },
+  "homepage": "https://github.com/santoriggio/js-key-validator#readme",
   "keywords": ["javascript", "key", "validator", "key-validator"],
   "author": "Santo Riggio",
   "type": "module",
