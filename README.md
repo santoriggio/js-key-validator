@@ -49,8 +49,7 @@ const obj = {
 };
 ```
 
-
-#### Parameters
+### Parameters
 
 The `keyValidator` function accepts the following parameters:
 
@@ -60,9 +59,10 @@ The `keyValidator` function accepts the following parameters:
 | `type`    | string           | The type of validation to perform.            |
 | `options` | string \| object | The path within the object for validation or The options for the validation.|
 
+
 The available types and their corresponding options are as follows:
 
-##### isString
+#### isString
 
 | Option       | Type             | Description                                                           |
 | ------------ | ---------------- | --------------------------------------------------------------------- |
@@ -70,8 +70,6 @@ The available types and their corresponding options are as follows:
 | `minLength`  | number           | Specifies the minimum length of the string (optional).                 |
 | `maxLength`  | number           | Specifies the maximum length of the string (optional).                 |
 | `regex`      | RegExp           | Specifies a regular expression pattern that the string must match (optional). |
-
-###### Example 
 
 ```javascript
 // Check if object has name and it is a string
@@ -81,7 +79,7 @@ console.log(validateName.isValid); // Output: true
 console.log(validateName.value); // Output: John
 ```
 
-##### isNumber
+#### isNumber
 
 | Option          | Type             | Description                                                                     |
 | --------------- | ---------------- | ------------------------------------------------------------------------------- |
@@ -94,8 +92,6 @@ console.log(validateName.value); // Output: John
 | `positiveOnly`  | boolean          | Specifies whether the number must be positive (optional).                        |
 | `negativeOnly`  | boolean          | Specifies whether the number must be negative (optional).                        |
 
-###### Example
-
 ```javascript
 // Check if age is a number
 const validateAge = keyValidator(obj, "isNumber", "age");
@@ -104,14 +100,14 @@ console.log(validateAge.isValid); // Output: true
 console.log(validateAge.value); // Output: 30
 ```
 
-##### isBoolean
+#### isBoolean
 
 | Option       | Type             | Description                                                           |
 | ------------ | ---------------- | --------------------------------------------------------------------- |
 | `path`       | string           | The path within the object for validation, representing the nested property path. |
 
 
-##### isURL
+#### isURL
 
 Validates if the value is a URL.
 
@@ -120,7 +116,7 @@ Validates if the value is a URL.
 | `path`       | string           | The path within the object for validation, representing the nested property path. |
 
 
-##### isEmail
+#### isEmail
 
 Validates if the value is an email.
 
