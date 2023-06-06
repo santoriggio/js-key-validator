@@ -7,6 +7,15 @@ build/
 *.log
 *.lock
 
+# Development files
+*.ts
+tsconfig.json
+
+# Build artifacts
+/dist
+*.js.map
+
+
 # Source files
 src/
 

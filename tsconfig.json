@@ -6,7 +6,8 @@
       "module": "es6",
       "target": "es6",
       "lib": ["es6", "dom"],
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "sourceMap": true
     },
     "include": ["src"],
     "exclude": ["node_modules", "dist"]
