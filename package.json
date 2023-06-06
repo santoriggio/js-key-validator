@@ -1,6 +1,6 @@
 {
   "name": "js-key-validator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Javascript key validator",
   "main": "dist/index.min.js",
   "scripts": {},
