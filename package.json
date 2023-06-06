@@ -1,8 +1,9 @@
 {
   "name": "js-key-validator",
-  "version": "1.0.5",
+  "version": "1.0.13",
   "description": "Javascript key validator",
   "main": "dist/index.min.js",
+  "types": "dist/index.d.ts",
   "scripts": {},
   "repository": {
     "type": "git",

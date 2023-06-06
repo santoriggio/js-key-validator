@@ -10,11 +10,6 @@ build/
 # Development files
 tsconfig.json
 
-# Build artifacts
-/dist
-*.js.map
-
-
 # Source files
 src/
 
