@@ -1,0 +1,36 @@
+# Files and directories to ignore when publishing to npm
+
+# Development and build artifacts
+node_modules/
+dist/
+build/
+*.log
+*.lock
+
+# Source files
+src/
+
+# Configuration files
+*.config.js
+
+# Test files
+__tests__/
+*.test.js
+
+# Documentation and demo files
+docs/
+examples/
+
+# Miscellaneous files
+.editorconfig
+.gitignore
+.eslintignore
+.eslintrc.js
+.prettierignore
+.prettierrc.js
+.npmrc
+.package-lock.json
+.yarn.lock
+
+
+index.js
