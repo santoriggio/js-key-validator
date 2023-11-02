@@ -13,7 +13,7 @@ export type Options = string | StringOptions | NumberOptions | BooleanOptions;
 export type StringOptions = {
   path?: string;
   minLength?: number;
-  maxLenghth?: number;
+  maxLength?: number;
   regex?: RegExp;
 };
 
@@ -40,4 +40,21 @@ export type URLOptions = {
   path?: string;
 };
 
-export type Types = "isString" | "isNumber" | "isBoolean" | "isEmail" | "isURL";
+export type JSONOptions = {
+  path?: string;
+};
+
+export type ObjectOptions = {
+  path?: string;
+  minLength?: number;
+  maxLength?: number;
+};
+
+export type Types =
+  | "isString"
+  | "isNumber"
+  | "isBoolean"
+  | "isEmail"
+  | "isURL"
+  | "isJSON"
+  | "isObject";

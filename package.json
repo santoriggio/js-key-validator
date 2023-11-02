@@ -1,10 +1,12 @@
 {
   "name": "js-key-validator",
-  "version": "1.0.13",
+  "version": "1.0.18",
   "description": "Javascript key validator",
   "main": "dist/index.min.js",
   "types": "dist/index.d.ts",
-  "scripts": {},
+  "scripts": {
+    "build": "npx uglifyjs dist/index.js --output dist/index.min.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/santoriggio/js-key-validator.git"

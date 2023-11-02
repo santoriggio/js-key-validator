@@ -1,4 +1,4 @@
-import keyValidator from "./dist/index.js";
+import keyValidator from "./dist/index.min.js";
 
 const obj = {
   name: "John",
@@ -10,11 +10,12 @@ const obj = {
   },
   password: "StrongPass",
   email: "john@email.com",
+  url: "#",
+  json: "[25,50]",
 };
 
-const validate = keyValidator(obj, "isEmail", "email");
-
-console.log(validate);
+const validateJSON = keyValidator(obj.json, "isString", {});
+console.log(validateJSON);
 
 // //Check if object has name and it is a string
 // const validateName = keyValidator(obj, "isString", "name");

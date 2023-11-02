@@ -1,7 +1,9 @@
 import {
   BooleanOptions,
   EmailOptions,
+  JSONOptions,
   NumberOptions,
+  ObjectOptions,
   Options,
   ReturnType,
   StringOptions,
@@ -39,7 +41,19 @@ export default function keyValidator(
   options?: string | URLOptions
 ): ReturnType<string>;
 
-export default function keyValidator(value: any, type: Types, options?: Options) {
+export default function keyValidator(
+  value: string,
+  type: "isJSON",
+  options?: string | JSONOptions
+): ReturnType<string>;
+
+export default function keyValidator(
+  value: any,
+  type: "isObject",
+  options?: string | ObjectOptions
+): ReturnType<any>;
+
+export default function keyValidator(value: any, type: Types, options: Options = {}) {
   try {
     let formattedValue = value;
 
@@ -74,7 +88,7 @@ export default function keyValidator(value: any, type: Types, options?: Options)
     }
 
     if (type == "isString") {
-      const { minLength, maxLenghth, regex } = options as StringOptions;
+      const { minLength, maxLength, regex } = options as StringOptions;
 
       let isValid = typeof formattedValue == "string" && formattedValue != null;
 
@@ -82,8 +96,8 @@ export default function keyValidator(value: any, type: Types, options?: Options)
         if (typeof minLength != "undefined") {
           if (formattedValue.length < minLength) isValid = false;
         }
-        if (typeof maxLenghth != "undefined") {
-          if (formattedValue.length > maxLenghth) isValid = false;
+        if (typeof maxLength != "undefined") {
+          if (formattedValue.length > maxLength) isValid = false;
         }
         if (typeof regex != "undefined") {
           if (!regex.test(formattedValue)) isValid = false;
@@ -151,12 +165,40 @@ export default function keyValidator(value: any, type: Types, options?: Options)
 
     if (type == "isURL") {
       let isValid = typeof formattedValue != "undefined" && formattedValue != null;
+      const linkRegex = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/\S*)?$/;
+
+      if (isValid) {
+        isValid = linkRegex.test(formattedValue);
+      }
+
+      return { isValid, value: formattedValue };
+    }
+
+    if (type == "isJSON") {
+      let isValid = typeof formattedValue != "undefined" && formattedValue != null;
 
       try {
-        new URL(value);
-        isValid = true;
+        JSON.parse(formattedValue);
       } catch (error) {
         isValid = false;
+      }
+
+      return { isValid, value: formattedValue };
+    }
+
+    if (type == "isObject") {
+      const { minLength, maxLength } = options as ObjectOptions;
+
+      let isValid = typeof formattedValue != "undefined" && formattedValue != null;
+
+      if (isValid) {
+        if (Array.isArray(formattedValue)) isValid = false;
+        if (typeof minLength != "undefined") {
+          if (Object.keys(formattedValue).length < minLength) isValid = false;
+        }
+        if (typeof maxLength != "undefined") {
+          if (Object.keys(formattedValue).length < maxLength) isValid = false;
+        }
       }
 
       return { isValid, value: formattedValue };
